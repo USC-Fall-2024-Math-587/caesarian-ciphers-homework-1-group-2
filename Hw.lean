@@ -91,13 +91,7 @@ def Alphabet.shift (a : Alphabet) (n : Nat) : Alphabet :=
   let shifted : Nat := ((a.char.toNat - 65 + n) % 26) + 65
   -- We can use `have` but the Lean only remembers the type and not the actual term
   -- `have`'s are useful for proofs
-  have valid : shifted.isValidChar :=
-    by
-
-      have h1 : 65 <= shifted := Nat.le_add_left _ _
-      have h2 : (a.char.toNat - 65 + n) % 26 < 26 := Nat.mod_lt _ (by decide)
-
-  -- `by omega` will work with the correct `shifted`
+  have valid : shifted.isValidChar := by omega -- `by omega` will work with the correct `shifted`
   -- `omega` is a tactic that can solve linear arithmetic problemes for natural numbers and
   -- integers
   { char := Char.ofNatAux shifted valid,
@@ -106,7 +100,7 @@ def Alphabet.shift (a : Alphabet) (n : Nat) : Alphabet :=
       -- either from its database or provided by the user in the call
       change 65 ≤ shifted ∧ shifted ≤ 90 -- `change` attempts to change the goal to something that
       -- is definitionally equal to the current goal
-      sorry } -- finish this proof with `omega` when you have the correct `shifted`
+      omega } -- finish this proof with `omega` when you have the correct `shifted`
 
 /-
 Finally we encode our string by converting it to a list of `Alphabet` values, shifting
