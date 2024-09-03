@@ -88,10 +88,15 @@ def Alphabet.shift (a : Alphabet) (n : Nat) : Alphabet :=
   -- add n for shifted position
   -- shifted posistion % 26 for wrapped position (5 % 26 = 5, 29 % 26 = 3)
   -- add 65 converts position to ASCII value
-  let shifted : Nat := ((a.char.toNat - 65 + n) % 26) + 65 -- fill this in with the correct natural number
+  let shifted : Nat := ((a.char.toNat - 65 + n) % 26) + 65
   -- We can use `have` but the Lean only remembers the type and not the actual term
   -- `have`'s are useful for proofs
-  have valid : shifted.isValidChar := sorry
+  have valid : shifted.isValidChar :=
+    by
+
+      have h1 : 65 <= shifted := Nat.le_add_left _ _
+      have h2 : (a.char.toNat - 65 + n) % 26 < 26 := Nat.mod_lt _ (by decide)
+
   -- `by omega` will work with the correct `shifted`
   -- `omega` is a tactic that can solve linear arithmetic problemes for natural numbers and
   -- integers
