@@ -172,7 +172,7 @@
 
 	\begin{center}
 		\ttfamily
-		I am fairly familiar with all forms of secret writing, and am myself the author of a trifling monograph upon the subject, in which I analyze one hundred separate ciphers, but I confess that this is entirely new to me. The object of those who invented this system has apparently been to conceal that these characters convey a message, and to give the idea that they are mere sketches of children.
+		I am fairly familiar with all forms of secret writing, and am myself the author of a trifling monograph upon the subject, in which I analyze one hundred separate ciphers, but I confess that this is entirely new to me.\;The object of those who invented this system has apparently been to conceal that these characters convey a message, and to give the idea that they are mere sketches of children.
 	\end{center}
 
 
@@ -180,28 +180,55 @@
 	\item (1.5) Suppose that you have an alphabet of 26 letters.
 		\begin{enumerate}
 			\item  How many possible simple substitution ciphers are there?
-			\begin{center}
-				\texttt{26! Different simple substitution. 26 possibilities for the first and decreases as a letter is taken.}
-			\end{center}
+			
+			\medskip
+			\textit{Solution.}
+
+			There are $26!$ different simple substitution ciphers: there are 26 choices for `A', 25 choices for `B', and so on until there is one choice left for `Z'.
+			%\begin{center}
+			%	\texttt{26! Different simple substitution. 26 possibilities for the first and decreases as a letter is taken.}
+			%\end{center}
 			\item  A letter in the alphabet is said to be fixed if the encryption of the letter is the
 				letter itself. How many simple substitution ciphers are there that leave:
 			\begin{enumerate}
 				\item No letters fixed?
-				\begin{center}
-					\texttt{26! Since no letters can't be themselves}
-				\end{center}
+				
+				\medskip
+				\textit{Solution.}
+			
+				This is the number of derangements of a 26-element set, written $!26$. There are various ways to compute this: one is $$26! \sum_{i=0}^{26} \frac{(-1)^i}{i!}.\footnote{See the proof of this \href{https://en.wikipedia.org/wiki/Derangement}{here.}}$$ 
+				% \begin{center}
+				% 	\texttt{26! Since no letters can't be themselves}
+				% \end{center}
 				\item At least one letter fixed?
-				\begin{center}
-					\texttt{26! - 25! Total different minus No fixed letters with at least one}
-				\end{center}
-				\item Exactly one letter fixed? 
-				\begin{center}
-					\texttt{25! With only one letter fixed on itself. }
-				\end{center}
+				
+				\medskip
+				\textit{Solution.}
+
+				This is all the ciphers except for the ciphers with no fixed points, both values of which we have already computed. So there are $26! - !26$ such ciphers.
+
+				% \begin{center}
+				% 	\texttt{26! - 25! Total different minus No fixed letters with at least one}
+				% \end{center}
+				\item Exactly one letter fixed?
+				
+				\medskip
+				\textit{Solution.}
+			
+				We first choose a letter to fix, and then permute the others with no fixed points. There are 26 choices for the letter to fix, and then $!25$ ways to permute the other letters with no fixed points. So there $26(!25)$ such ciphers.
+
+				% \begin{center}
+				% 	\texttt{25! With only one letter fixed on itself. }
+				% \end{center}
 				\item At least two letters fixed?
-				\begin{center}
-					\texttt{26! - 25! -24! + 23! }
-				\end{center}
+				
+				\medskip
+				\textit{Solution.}
+
+				This is all the ciphers except for the ciphers with no fixed points or exactly one fixed point, all three of which we have already computed. So there are $26! - 26(!25) - !26$ such ciphers. 
+				% \begin{center}
+				% 	\texttt{26! - 25! -24! + 23! }
+				% \end{center}
 			\end{enumerate}
 			(Part (b) is quite challenging! You might try doing the problem first with an alphabet 
 			of four or five letters to get an idea of what is going on.)
