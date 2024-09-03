@@ -187,9 +187,21 @@
 				letter itself. How many simple substitution ciphers are there that leave:
 			\begin{enumerate}
 				\item No letters fixed?
+				\begin{center}
+					\texttt{26! Since no letters can't be themselves}
+				\end{center}
 				\item At least one letter fixed?
-				\item Exactly one letter fixed?
+				\begin{center}
+					\texttt{26! - 25! Total different minus No fixed letters with at least one}
+				\end{center}
+				\item Exactly one letter fixed? 
+				\begin{center}
+					\texttt{25! With only one letter fixed on itself. }
+				\end{center}
 				\item At least two letters fixed?
+				\begin{center}
+					\texttt{26! - 25! -24! + 23! }
+				\end{center}
 			\end{enumerate}
 			(Part (b) is quite challenging! You might try doing the problem first with an alphabet 
 			of four or five letters to get an idea of what is going on.)
