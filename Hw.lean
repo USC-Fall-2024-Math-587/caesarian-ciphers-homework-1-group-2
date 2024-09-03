@@ -83,10 +83,16 @@ correspond to which characters, try e.g. `#eval 'A'.toNat`.
 -/
 def Alphabet.shift (a : Alphabet) (n : Nat) : Alphabet :=
   -- We can declare local variables with `let`
-  let shifted : Nat := sorry -- fill this in with the correct natural number
+  -- convert current character to Nat
+  -- subtract 65 to match position in Alphabet (E is ASCII 69, subtract 65, 4 is E position in alphabet)
+  -- add n for shifted position
+  -- shifted posistion % 26 for wrapped position (5 % 26 = 5, 29 % 26 = 3)
+  -- add 65 converts position to ASCII value
+  let shifted : Nat := ((a.char.toNat - 65 + n) % 26) + 65 -- fill this in with the correct natural number
   -- We can use `have` but the Lean only remembers the type and not the actual term
   -- `have`'s are useful for proofs
-  have valid : shifted.isValidChar := sorry -- `by omega` will work with the correct `shifted`
+  have valid : shifted.isValidChar := sorry
+  -- `by omega` will work with the correct `shifted`
   -- `omega` is a tactic that can solve linear arithmetic problemes for natural numbers and
   -- integers
   { char := Char.ofNatAux shifted valid,
@@ -103,4 +109,3 @@ each one, and then converting the list back to a string.
 -/
 def encode (s : String) (n : Nat) : String :=
   toString (s.toAlphabetList.map fun a => a.shift n)
-
