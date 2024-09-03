@@ -94,7 +94,7 @@
 			\texttt{}
 		\end{center}
 	 	\item The decryption table for the given cipher:
-                \begin{center}
+            \begin{center}
                 \hspace*{-1cm}
     			\begin{tabular}{|c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c| c| c|}
     				\hline
@@ -154,6 +154,27 @@
 	\medskip
 	\textit{Solution.}
 	
+	After a fair amount of trial and error (including confusion as to why the string ``the'' was appearing and then realizing it was a substring of a word) and looking at common bigrams and trigrams, we noticed that ``XCSXXC'' appears 3 times. Comparing this with the common bigrams, we tried assigning this string to ``thatth'', and then assigning `V' to `e' since it was the most frequent and followed ``thatth'' twice. We then used the letter frequencies to start tentatively adding in other vowels, and by this point enough was filled in that it was fairly clear how to fill in the rest of the letters based on strings looking like certain words. We believe this is the decryption key (excluding `T' and `Y' since they never appear):
+
+	\begin{center}
+		\begin{tabular}{|c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c |c|}
+			\hline
+			A & B & C & D & E & F & G & H & I & J & K & L & M & N & O & 
+			P & Q & R & S & U & V & W & X & Z \\
+			\hline
+			n & y & h & b & f & z & i & g & u & c & w & j & v & r & s & 
+			p & o & k & a & l & e & d & t & m \\
+			\hline 
+		\end{tabular}
+	\end{center}
+
+	Thus, the decrypted message (with adding instances of ``the'' where they seem to have been removed) is:
+
+	\begin{center}
+		\ttfamily
+		I am fairly familiar with all forms of secret writing, and am myself the author of a trifling monograph upon the subject, in which I analyze one hundred separate ciphers, but I confess that this is entirely new to me. The object of those who invented this system has apparently been to conceal that these characters convey a message, and to give the idea that they are mere sketches of children.
+	\end{center}
+
 
 	\bigskip
 	\item (1.5) Suppose that you have an alphabet of 26 letters.
